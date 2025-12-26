@@ -49,11 +49,11 @@ public class Main {
             }
 
             out.println(response);
+            out.flush();
             System.out.println("Message sent to the client: " + response);
 
             //closing the socket
             clientSocket.close();
-
 
         } catch (IOException e) {
             System.out.println("IOException: " + e.getMessage());
