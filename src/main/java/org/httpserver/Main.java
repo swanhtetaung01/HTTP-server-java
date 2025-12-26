@@ -33,7 +33,21 @@ public class Main {
             System.out.println("Message from the client: " + request);
 
             //sending and printing the response to the client
-            String response = "HTTP/1.1 200 OK\r\n\r\n";
+            String response = " ";
+
+            if (request != null) {
+                String[] parts = request.split(" ");
+                String path =  parts[1];
+
+                if (path.equals("/")) {
+                    response = "HTTP/1.1 200 OK\r\n\r\n";
+                }else {
+                    response = "HTTP/1.1 404 Not Found\r\n\r\n";
+                }
+            }else {
+                response = "HTTP/1.1 404 Not Found\r\n\r\n";
+            }
+
             out.println(response);
             System.out.println("Message sent to the client: " + response);
 
