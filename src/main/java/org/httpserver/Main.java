@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Message from the client: " + request);
 
             //sending and printing the response to the client
-            String response = " ";
+            String response;
 
             if (request != null) {
                 String[] parts = request.split(" ");
