@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Message from the client: " + request);
 
             //sending and printing the response to the client
-            String response = " ";
+            String response;
 
             if (request != null) {
                 String[] parts = request.split(" ");
@@ -41,7 +41,12 @@ public class Main {
 
                 if (path.equals("/")) {
                     response = "HTTP/1.1 200 OK\r\n\r\n";
-                }else {
+                }else if (path.startsWith("/echo/")) {
+                    String echoContent = path.substring(6);
+                    response = "HTTP/1.1 200 OK\r\n\r\n" +
+                            "Content-Type: text/plain\r\n" +
+                            "Content-Length: " + echoContent.length() + "\r\n\r\n" + echoContent;
+                } else {
                     response = "HTTP/1.1 404 Not Found\r\n\r\n";
                 }
             }else {
@@ -53,7 +58,7 @@ public class Main {
             System.out.println("Message sent to the client: " + response);
 
             //closing the socket
-            clientSocket.close();
+            //clientSocket.close();
 
         } catch (IOException e) {
             System.out.println("IOException: " + e.getMessage());
