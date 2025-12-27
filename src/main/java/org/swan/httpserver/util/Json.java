@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.*;
 
 import java.io.IOException;
 
-public class json {
+public class Json {
     private static ObjectMapper myObjectMapper;
     private static ObjectMapper defaultObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
