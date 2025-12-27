@@ -1,4 +1,4 @@
-package org.httpserver;
+package org.swan.httpserver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Main {
+public class HttpServer {
     public static void main(String[] args) {
         // You can use print statements as follows for debugging, they'll be visible when running tests.
         System.out.println("Logs from your program will appear here!");
@@ -42,7 +42,7 @@ public class Main {
                 if (path.equals("/")) {
                     response = "HTTP/1.1 200 OK\r\n\r\n";
                 }else if (path.startsWith("/echo/")) {
-                    String echoContent = path.substring(6);
+                    String echoContent = path.substring(6);                 
                     response = "HTTP/1.1 200 OK\r\n\r\n" +
                             "Content-Type: text/plain\r\n" +
                             "Content-Length: " + echoContent.length() + "\r\n\r\n" + echoContent;
